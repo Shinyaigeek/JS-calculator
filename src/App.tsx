@@ -9,6 +9,7 @@ import * as Calclator from "./script/calculator";
 export interface ButtonProps {
   label: string;
   func: () => void;
+  disabled?: boolean;
 }
 
 function App() {
@@ -25,11 +26,24 @@ function App() {
         },
         {
           label: "(",
-          func: () => {}
+          func: () => {
+            shownValue.length === 0 || shownValue[shownValue.length - 1] === " "
+              ? setShownValue(`${shownValue}( `)
+              : setShownValue(`${shownValue} ( `);
+          },
+          disabled:
+            shownValue.length > 0 &&
+            !Number.isNaN(Number(shownValue.trim().split("").pop()))
         },
         {
           label: ")",
-          func: () => {}
+          func: () => {
+            setShownValue(`${shownValue} )`);
+          },
+          disabled:
+            Number.isNaN(Number(shownValue.split("").pop())) ||
+            (shownValue.match(/\(/g)?.length ?? Infinity) <=
+              (shownValue.match(/\)/g)?.length ?? 0)
         },
         {
           label: "÷",
@@ -128,7 +142,7 @@ function App() {
           func: () => {}
         },
         {
-          label: "%",
+          label: "±",
           func: () => {}
         },
         {

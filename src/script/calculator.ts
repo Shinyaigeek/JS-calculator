@@ -29,8 +29,25 @@ export const arrange2RPN = (base: string[]) => {
 
 export const parseString2Formula = (base: string) => {
   const stacks: number[] = [];
+  let baseRemovedBacket = base;
+  let isThereGroup = true;
+  while (isThereGroup) {
+    if (baseRemovedBacket.match(/\([^\(]+?\)/)) {
+      baseRemovedBacket = baseRemovedBacket.replace(/\([^\(]+?\)/, tar => {
+        if (
+          baseRemovedBacket.match(/\([^\(]+?\)/)!.input ===
+          baseRemovedBacket.match(/\([^\(]+?\)/)![0]
+        ) {
+          return tar.replace("( ", "").replace(" )", "");
+        }
+        return String(parseString2Formula(tar));
+      });
+    } else {
+      isThereGroup = false;
+    }
+  }
   const doLater: ((left: number, right: number) => number)[] = [];
-  const formulaArray = arrange2RPN(base.split(" "));
+  const formulaArray = arrange2RPN(baseRemovedBacket.split(" "));
   formulaArray.forEach(part => {
     switch (part) {
       case "+": {
