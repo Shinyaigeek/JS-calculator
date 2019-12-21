@@ -2,10 +2,10 @@ import React from "react";
 import { Fab } from "@material-ui/core";
 import { ButtonProps } from "../App";
 
-import Style from "styled-jsx"
+import Style from "styled-jsx";
 
 interface Props {
-    buttons:ButtonProps[]
+  buttons: ButtonProps[];
 }
 
 export default function RowButtons(props: Props) {
@@ -17,24 +17,25 @@ export default function RowButtons(props: Props) {
             color="primary"
             onClick={() => prop.func()}
             style={{
-                width:"80px",
-                height:"80px",
-                margin:"auto",
+              width: "80px",
+              height: "80px",
+              margin: "auto"
             }}
+            disabled={prop.disabled}
           >
             {prop.label}
           </Fab>
         );
       })}
       <style jsx>
-          {
-              `.buttons--column{
-                  width:100%;
-                  display:flex;
-                  margin:calc(4vh - 9px - 3px) 0;
-                  height:80px;
-              }`
+        {`
+          .buttons--column {
+            width: 100%;
+            display: flex;
+            margin: calc(4vh - 9px - 3px) 0;
+            height: 80px;
           }
+        `}
       </style>
     </div>
   );

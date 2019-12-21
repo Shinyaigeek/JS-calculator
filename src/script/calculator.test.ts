@@ -29,3 +29,17 @@ test("[1 + 2 × 3 - 4 ÷ 5] to equal 1 2 + 3 × 4 - 5 ÷", () => {
     Calculator.arrange2RPN(["1", "+", "2", "×", "3", "-", "4", "÷", "5"])
   ).toMatchObject([1, 2, "+", 3, "×", 4, "-", 5, "÷"]);
 });
+
+test("1 + ( 2 × ( 3 + ( 4 - 5 ) ) - 6 ) × 7 to equal to -13", () => {
+  expect(
+    Calculator.parseString2Formula("1 + ( 2 × ( 3 + ( 4 - 5 ) ) - 6 ) × 7")
+  ).toBe(-13);
+});
+
+test("( ( 3 + 5 ) × 9 ) - 2 to equal to 70", () => {
+  expect(Calculator.parseString2Formula("( ( 3 + 5 ) × 9 ) - 2")).toBe(70);
+});
+
+test("( ( 3 + 5 ) × 9 ) - ( 4 ÷ 2 ) to equal to 70", () => {
+  expect(Calculator.parseString2Formula("( ( 3 + 5 ) × 9 ) - ( 4 ÷ 2 )")).toBe(70);
+});
