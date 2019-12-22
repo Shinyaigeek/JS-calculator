@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "node ./src/script/makeManifestJson.js && webpack",
-    "start": "yarn run test && node ./src/script/makeManifestJson.js && webpack-dev-server"
+    "start": "yarn run test && node ./src/script/makeManifestJson.js && webpack-dev-server --https"
   },
   "jest": {
     "moduleFileExtensions": [
