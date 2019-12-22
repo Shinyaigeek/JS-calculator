@@ -7,7 +7,7 @@ const appShellFiles = [
   "./img/js_calc-192x912.png",
   "./img/js_calc-152x152.png",
   "./img/js_calc-144x144.png",
-  "./img/js_calc-128x28.png"
+  "./img/js_calc-128x128.png"
 ];
 
 self.addEventListener("install", function(e) {
