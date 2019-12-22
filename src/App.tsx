@@ -177,5 +177,6 @@ function App() {
 ReactDOM.render(<App />, document.getElementById("app"));
 
 if('serviceWorker' in navigator) {
+  console.log("[PWA]can install")
   navigator.serviceWorker.register('./serviceworker.js');
 };
