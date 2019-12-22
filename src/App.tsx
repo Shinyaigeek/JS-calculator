@@ -185,7 +185,7 @@ ReactDOM.render(<App />, document.getElementById("app"));
 
 if ("serviceWorker" in navigator) {
   console.log("[ServiceWorker] you can add pwa")
-  navigator.serviceWorker.register("/sw.js").then(
+  navigator.serviceWorker.register("/serviceworker.js").then(
     function(registration) {
       // Registration was successful
       console.log(
