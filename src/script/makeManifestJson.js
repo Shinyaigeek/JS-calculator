@@ -127,5 +127,12 @@ fs.mkdir("./public", () => {
         if (err) throw err;
       }
     );
+    fs.copyFile(
+      "./src/script/img/favicon.ico",
+      "./public/img/favicon.ico",
+      err => {
+        if (err) throw err;
+      }
+    );
   });
 });
