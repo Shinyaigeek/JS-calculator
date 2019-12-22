@@ -28,7 +28,7 @@ const manifest = `{
         "sizes": "512x512",
         "type": "image/png"
       }],
-    "start_url": "./index.html",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#3E4EB8",
     "theme_color": "#2F3BA2"
@@ -36,14 +36,14 @@ const manifest = `{
 
 const serviceworker = `const cacheName = "js-hitech-calc-v1";
 const appShellFiles = [
-  "./index.html",
-  "./bundle.js",
-  "./img/js_calc-512x512.png",
-  "./img/js_calc-256x256.png",
-  "./img/js_calc-192x912.png",
-  "./img/js_calc-152x152.png",
-  "./img/js_calc-144x144.png",
-  "./img/js_calc-128x128.png"
+  "/index.html",
+  "/bundle.js",
+  "/img/js_calc-512x512.png",
+  "/img/js_calc-256x256.png",
+  "/img/js_calc-192x912.png",
+  "/img/js_calc-152x152.png",
+  "/img/js_calc-144x144.png",
+  "/img/js_calc-128x128.png"
 ];
 
 self.addEventListener("install", function(e) {

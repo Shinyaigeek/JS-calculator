@@ -1,13 +1,13 @@
 const cacheName = "js-hitech-calc-v1";
 const appShellFiles = [
-  "./index.html",
-  "./bundle.js",
-  "./img/js_calc-512x512.png",
-  "./img/js_calc-256x256.png",
-  "./img/js_calc-192x912.png",
-  "./img/js_calc-152x152.png",
-  "./img/js_calc-144x144.png",
-  "./img/js_calc-128x128.png"
+  "/index.html",
+  "/bundle.js",
+  "/img/js_calc-512x512.png",
+  "/img/js_calc-256x256.png",
+  "/img/js_calc-192x912.png",
+  "/img/js_calc-152x152.png",
+  "/img/js_calc-144x144.png",
+  "/img/js_calc-128x128.png"
 ];
 
 self.addEventListener("install", function(e) {
