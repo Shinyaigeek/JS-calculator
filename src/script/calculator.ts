@@ -19,9 +19,9 @@ export const makeNumber = (base: number, target: number) => {
 };
 
 export const arrange2RPN = (base: string[]) => {
-  const rpn: (number | string)[] = [Number(base[0])];
+  const rpn: string[] = [base[0]];
   for (let i: number = 1; i < base.length; i += 2) {
-    rpn.push(Number(base[i + 1]));
+    rpn.push(base[i + 1]);
     rpn.push(base[i]);
   }
   return rpn;
@@ -67,6 +67,9 @@ export const parseString2Formula = (base: string) => {
         break;
       }
       default: {
+        if (part.includes("^")) {
+          const res = calcPow(part);
+        }
         stacks.push(Number(part));
         break;
       }
@@ -78,93 +81,21 @@ export const parseString2Formula = (base: string) => {
   return stacks[0];
 };
 
-class VirtualCalculator {
-  constructor() {}
-}
+export const pow = (left: number, right: number) => {
+  let res = 1;
+  for (let i = 0; i < right; i++) {
+    res *= left;
+  }
+  return res;
+};
 
-class Group {
-  left: number | Group;
-  right: number | Group;
-  constructor(left: number | Group, right: number | Group) {
-    this.left = left;
-    this.right = right;
+export const calcPow = (base: string) => {
+  const powed = base.split("^").map(Number);
+  powed.reverse();
+  while (powed.length > 1) {
+    powed.push(pow(powed.pop()!, powed.pop()!));
   }
+  return powed[0];
+};
 
-  reduce() {}
-}
-
-export class Formula {
-  constructor(formula: Add | Division | Minus | Multiple | Formula | number) {}
-}
-
-export class Division extends Group {
-  constructor(left: number | Group, right: number | Group) {
-    super(left, right);
-    this.left = left;
-    this.right = right;
-  }
-  reduce() {
-    const divisionLeft =
-      typeof this.left === "number" ? this.left : this.left.reduce();
-    const divisionRight =
-      typeof this.right === "number" ? this.right : this.right.reduce();
-    if (!divisionLeft || !divisionRight) {
-      throw new Error("Division miss");
-    }
-    return divisionLeft / divisionRight;
-  }
-}
-
-export class Multiple extends Group {
-  constructor(left: number | Group, right: number | Group) {
-    super(left, right);
-    this.left = left;
-    this.right = right;
-  }
-  reduce() {
-    const multipleLeft =
-      typeof this.left === "number" ? this.left : this.left.reduce();
-    const multipleRight =
-      typeof this.right === "number" ? this.right : this.right.reduce();
-    if (!multipleLeft || !multipleRight) {
-      throw new Error("Multiple miss");
-    }
-    return multipleLeft * multipleRight;
-  }
-}
-
-export class Add extends Group {
-  constructor(left: number | Group, right: number | Group) {
-    super(left, right);
-    this.left = left;
-    this.right = right;
-  }
-  reduce() {
-    const plusLeft =
-      typeof this.left === "number" ? this.left : this.left.reduce();
-    const plusRight =
-      typeof this.right === "number" ? this.right : this.right.reduce();
-    if (!plusLeft || !plusRight) {
-      throw new Error("Add miss");
-    }
-    return plusLeft + plusRight;
-  }
-}
-
-export class Minus extends Group {
-  constructor(left: number | Group, right: number | Group) {
-    super(left, right);
-    this.left = left;
-    this.right = right;
-  }
-  reduce() {
-    const minusLeft =
-      typeof this.left === "number" ? this.left : this.left.reduce();
-    const minusRight =
-      typeof this.right === "number" ? this.right : this.right.reduce();
-    if (!minusLeft || !minusRight) {
-      throw new Error("Minus miss");
-    }
-    return minusLeft - minusRight;
-  }
-}
+export const defineUserFunction = (base: string) => {};
