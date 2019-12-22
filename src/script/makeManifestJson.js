@@ -78,51 +78,51 @@ self.addEventListener("fetch", function(e) {
 });
 `
 
-fs.mkdir("./dist/img", () => {
-  fs.writeFile("./dist/js-calc.webmanifest", manifest, err => {
+fs.mkdir("./public/img", () => {
+  fs.writeFile("./public/js-calc.webmanifest", manifest, err => {
     if (err) throw err;
   });
-  fs.writeFile("./dist/serviceworker.js", serviceworker, err => {
+  fs.writeFile("./public/serviceworker.js", serviceworker, err => {
     if (err) throw err;
   });
   fs.copyFile(
     "./src/script/img/js_calc-512x512.png",
-    "./dist/img/js_calc-512x512.png",
+    "./public/img/js_calc-512x512.png",
     err => {
       if (err) throw err;
     }
   );
   fs.copyFile(
     "./src/script/img/js_calc-256x256.png",
-    "./dist/img/js_calc-256x256.png",
+    "./public/img/js_calc-256x256.png",
     err => {
       if (err) throw err;
     }
   );
   fs.copyFile(
     "./src/script/img/js_calc-192x192.png",
-    "./dist/img/js_calc-192x192.png",
+    "./public/img/js_calc-192x192.png",
     err => {
       if (err) throw err;
     }
   );
   fs.copyFile(
     "./src/script/img/js_calc-144x144.png",
-    "./dist/img/js_calc-144x144.png",
+    "./public/img/js_calc-144x144.png",
     err => {
       if (err) throw err;
     }
   );
   fs.copyFile(
     "./src/script/img/js_calc-152x152.png",
-    "./dist/img/js_calc-152x152.png",
+    "./public/img/js_calc-152x152.png",
     err => {
       if (err) throw err;
     }
   );
   fs.copyFile(
     "./src/script/img/js_calc-128x128.png",
-    "./dist/img/js_calc-128x128.png",
+    "./public/img/js_calc-128x128.png",
     err => {
       if (err) throw err;
     }
