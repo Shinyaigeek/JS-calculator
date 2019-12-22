@@ -47,6 +47,7 @@ const appShellFiles = [
 ];
 
 self.addEventListener("install", function(e) {
+  console.log('👷', 'install', e);
   console.log("[Service Worker] Install");
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
@@ -56,7 +57,15 @@ self.addEventListener("install", function(e) {
   );
 });
 
+self.addEventListener('activate', (event) => {
+  console.log('👷', 'activate', event);
+  console.log('[serviceworker]activate);
+  return self.clients.claim();
+});
+
 self.addEventListener("fetch", function(e) {
+  console.log('👷', 'fetch', e);
+  console.log('[serviceworker]fetch);
   e.respondWith(
     caches.match(e.request).then(function(r) {
       console.log("[Service Worker] Fetching resource: " + e.request.url);
