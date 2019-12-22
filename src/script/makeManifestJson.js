@@ -59,13 +59,13 @@ self.addEventListener("install", function(e) {
 
 self.addEventListener('activate', (event) => {
   console.log('👷', 'activate', event);
-  console.log('[serviceworker]activate);
+  console.log('[serviceworker]activate');
   return self.clients.claim();
 });
 
 self.addEventListener("fetch", function(e) {
   console.log('👷', 'fetch', e);
-  console.log('[serviceworker]fetch);
+  console.log('[serviceworker]fetch');
   e.respondWith(
     caches.match(e.request).then(function(r) {
       console.log("[Service Worker] Fetching resource: " + e.request.url);
