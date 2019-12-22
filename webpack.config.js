@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    bundle: "./src/App.tsx"
+    bundle: "./src/App.tsx",
+    serviceworker: "./src/script/serviceworker.js"
   },
   output: {
     path: path.join(__dirname, "dist"),
