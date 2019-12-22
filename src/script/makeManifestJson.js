@@ -84,6 +84,10 @@ self.addEventListener("fetch", function(e) {
     })
   );
 });
+
+window.addEventListener('appinstalled', (event) => {
+  console.log('👍', 'appinstalled', event);
+});
 `;
 
 fs.mkdir("./public", () => {
