@@ -34,8 +34,7 @@ const manifest = `{
     "theme_color": "#2F3BA2"
   }`;
 
-const serviceworker = `
-const cacheName = "js-hitech-calc-v1";
+const serviceworker = `const cacheName = "js-hitech-calc-v1";
 const appShellFiles = [
   "./index.html",
   "./bundle.js",
