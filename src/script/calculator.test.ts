@@ -57,5 +57,9 @@ test("3! equal to 6", () => {
 })
 
 test("sin ( π / 2 ) equal to 1", () => {
-  expect(Calculator.calcSinFromMcLExpansion(Math.PI / 2)).toBe(1)
+  expect(Calculator.calcSinFromMcLExpansion(Math.PI / 4)).toBe(0.707)
+})
+
+test("cos( π ) equal to -1", () => {
+  expect(Calculator.calcCosFromMcLExpansion(Math.PI)).toBe(-1)
 })
