@@ -130,4 +130,8 @@ export const calcCosFromMcLExpansion = (x: number) => {
   return Math.round(preres * 1000) / 1000
 }
 
+export const calcTan = (x: number) => {
+  return calcSinFromMcLExpansion(x) / calcCosFromMcLExpansion(x)
+}
+
 export const defineUserFunction = (base: string) => { };

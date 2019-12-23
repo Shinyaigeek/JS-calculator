@@ -63,3 +63,4 @@ test("sin ( π / 2 ) equal to 1", () => {
 test("cos( π ) equal to -1", () => {
   expect(Calculator.calcCosFromMcLExpansion(Math.PI)).toBe(-1)
 })
+
