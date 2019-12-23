@@ -33,7 +33,14 @@ function App() {
           },
           disabled:
             shownValue.length > 0 &&
-            !Number.isNaN(Number(shownValue.trim().split("").pop()))
+            !Number.isNaN(
+              Number(
+                shownValue
+                  .trim()
+                  .split("")
+                  .pop()
+              )
+            )
         },
         {
           label: ")",
@@ -175,3 +182,20 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
+
+if ("serviceWorker" in navigator) {
+  console.log("[ServiceWorker] you can add pwa")
+  navigator.serviceWorker.register("/serviceworker.js").then(
+    function(registration) {
+      // Registration was successful
+      console.log(
+        "ServiceWorker registration successful with scope: ",
+        registration.scope
+      );
+    },
+    function(err) {
+      // registration failed :(
+      console.log("ServiceWorker registration failed: ", err);
+    }
+  );
+}
