@@ -69,6 +69,8 @@ export const parseString2Formula = (base: string) => {
       default: {
         if (part.includes("^")) {
           const res = calcPow(part);
+          stacks.push(res);
+          break
         }
         stacks.push(Number(part));
         break;
@@ -98,4 +100,12 @@ export const calcPow = (base: string) => {
   return powed[0];
 };
 
-export const defineUserFunction = (base: string) => {};
+export const calcFactorial = (base: string) => {
+  let res = 1;
+  for (let i = 1; i <= Number(base.replace("!", "")); i++) {
+    res *= i
+  }
+  return res
+}
+
+export const defineUserFunction = (base: string) => { };

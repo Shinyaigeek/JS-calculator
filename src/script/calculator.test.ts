@@ -45,9 +45,13 @@ test("( ( 3 + 5 ) × 9 ) - ( 4 ÷ 2 ) to equal to 70", () => {
 });
 
 test("2 * 3 to equal to 8", () => {
-  expect(Calculator.pow(2,3)).toBe(8);
+  expect(Calculator.pow(2, 3)).toBe(8);
 });
 
 test("2 * 3 * 4 to equal to 4096", () => {
   expect(Calculator.calcPow("2^3^4")).toBe(4096);
 });
+
+test("3! equal to 6", () => {
+  expect(Calculator.calcFactorial("3!"))
+})
