@@ -108,4 +108,15 @@ export const calcFactorial = (base: string) => {
   return res
 }
 
+export const calcSinFromMcLExpansion = (x: number) => {
+  let res = x;
+  let preres = 0;
+  for (let i = 3; i < 1000; i += 2) {
+    preres = res;
+    res += calcPow(`-1^${(i - 1) / 2}`) * calcPow(`${x}^${i}`) / calcFactorial(`${i}!`)
+    if (res.toString().includes("e")) break
+  }
+  return Math.round(preres * 1000) / 1000
+}
+
 export const defineUserFunction = (base: string) => { };

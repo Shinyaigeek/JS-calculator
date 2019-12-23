@@ -55,3 +55,7 @@ test("2 * 3 * 4 to equal to 4096", () => {
 test("3! equal to 6", () => {
   expect(Calculator.calcFactorial("3!"))
 })
+
+test("sin ( π / 2 ) equal to 1", () => {
+  expect(Calculator.calcSinFromMcLExpansion(Math.PI / 2)).toBe(1)
+})
