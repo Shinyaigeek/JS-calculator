@@ -11,7 +11,7 @@ interface Props {
 export default function RowButtons(props: Props) {
   return (
     <div className="buttons--column">
-      {props.buttons.map(prop => {
+      {props.buttons.map((prop, index) => {
         return (
           <Fab
             color="primary"
@@ -22,15 +22,15 @@ export default function RowButtons(props: Props) {
               margin: "auto"
             }}
             disabled={prop.disabled}
+            key={`button__${index}`}
           >
             {prop.label}
           </Fab>
         );
       })}
-      <style jsx>
+      <style jsx={true}>
         {`
           .buttons--column {
-            width: 100%;
             display: flex;
             margin: calc(4vh - 9px - 3px) 0;
             height: 80px;

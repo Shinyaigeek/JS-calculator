@@ -1,6 +1,6 @@
 {
   "name": "JS-calculator",
-  "version": "1.0.0",
+  "version": "1.21.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "now": "^16.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-material-ui-carousel": "^1.0.0",
     "sass-loader": "^8.0.0",
     "styled-components": "^4.4.1",
     "styled-jsx": "^3.2.4",

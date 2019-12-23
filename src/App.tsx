@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import Result from "./components/Result";
@@ -16,6 +16,14 @@ function App() {
   const [shownValue, setShownValue] = useState("");
 
   const PANEL_LABELS: ButtonProps[][][] = [
+    [
+      [
+        {
+          label: "test",
+          func: () => null
+        }
+      ]
+    ],
     [
       [
         {
@@ -159,6 +167,14 @@ function App() {
           }
         }
       ]
+    ],
+    [
+      [
+        {
+          label: "test",
+          func: () => null
+        }
+      ]
     ]
   ];
 
@@ -166,14 +182,19 @@ function App() {
     <div>
       <Result label={shownValue} />
       <div className="slider">
-        {PANEL_LABELS.map(pageprops => {
-          return <PageButtons pages={pageprops} />;
+        {PANEL_LABELS.map((pageprops, index) => {
+          return (
+            <PageButtons pages={pageprops} key={`page--button__${index}`} />
+          );
         })}
       </div>
-      <style jsx>
+      <style jsx={true}>
         {`
           .slider {
             margin-top: 100px;
+            overflow: auto;
+            display: flex;
+            scroll-snap-type: x mandatory;
           }
         `}
       </style>
@@ -184,7 +205,7 @@ function App() {
 ReactDOM.render(<App />, document.getElementById("app"));
 
 if ("serviceWorker" in navigator) {
-  console.log("[ServiceWorker] you can add pwa")
+  console.log("[ServiceWorker] you can add pwa");
   navigator.serviceWorker.register("/serviceworker.js").then(
     function(registration) {
       // Registration was successful
