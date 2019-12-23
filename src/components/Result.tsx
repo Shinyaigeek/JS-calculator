@@ -9,7 +9,7 @@ export default function Result(props: Props) {
   return (
     <div className="result">
       {props.label}
-      <style jsx>
+      <style jsx={true}>
         {`
           .result {
             width: 100vw;

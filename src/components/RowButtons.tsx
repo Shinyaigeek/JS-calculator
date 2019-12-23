@@ -28,10 +28,9 @@ export default function RowButtons(props: Props) {
           </Fab>
         );
       })}
-      <style jsx>
+      <style jsx={true}>
         {`
           .buttons--column {
-            width: 100%;
             display: flex;
             margin: calc(4vh - 9px - 3px) 0;
             height: 80px;

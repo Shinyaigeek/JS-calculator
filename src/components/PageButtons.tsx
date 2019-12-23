@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ButtonProps } from "../App";
 
 import RowButtons from "./RowButtons";
@@ -13,17 +13,23 @@ export default function PageButtons(props: Props) {
   return (
     <div className="buttons--page">
       {props.pages.map((pagesprops, index) => {
-        return <RowButtons buttons={pagesprops} key={`row-button__${index}`} />;
+        return (
+          <React.Fragment>
+            <RowButtons buttons={pagesprops} key={`row-button__${index}`} />
+            <style jsx={true}>
+              {`
+                .buttons--page {
+                  width: 100vw;
+                  margin: 12px 0;
+                  height: calc(100vh - 90px - 42px);
+                  scroll-snap-align: center;
+                  flex:none;
+                }
+              `}
+            </style>
+          </React.Fragment>
+        );
       })}
-      <style jsx>
-        {`
-          .buttons--page {
-            width: 96vw;
-            max-width: 400px;
-            height: calc(100vh - 90px - 42px);
-          }
-        `}
-      </style>
     </div>
   );
 }
