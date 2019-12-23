@@ -166,8 +166,8 @@ function App() {
     <div>
       <Result label={shownValue} />
       <div className="slider">
-        {PANEL_LABELS.map(pageprops => {
-          return <PageButtons pages={pageprops} />;
+        {PANEL_LABELS.map((pageprops,index) => {
+          return <PageButtons pages={pageprops} key={`page--button__${index}`}/>;
         })}
       </div>
       <style jsx>

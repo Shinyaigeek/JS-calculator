@@ -12,18 +12,17 @@ interface Props {
 export default function PageButtons(props: Props) {
   return (
     <div className="buttons--page">
-      {props.pages.map(pagesprops => {
-        return <RowButtons buttons={pagesprops} />;
+      {props.pages.map((pagesprops, index) => {
+        return <RowButtons buttons={pagesprops} key={`row-button__${index}`} />;
       })}
       <style jsx>
-          {
-              `.buttons--page{
-                  width:96vw;
-                  max-width:400px;
-                  height:calc(100vh - 90px - 42px)
-              }
-              `
+        {`
+          .buttons--page {
+            width: 96vw;
+            max-width: 400px;
+            height: calc(100vh - 90px - 42px);
           }
+        `}
       </style>
     </div>
   );
