@@ -29,16 +29,15 @@ export const arrange2RPN = (base: string[]) => {
 
 export const parseString2Formula = (base: string) => {
   const stacks: number[] = [];
-  let baseRemovedBacket = base;
+  let baseRemovedBacket = base.replace(/π/g, Math.PI.toString());
   let isThereGroup = true;
   while (isThereGroup) {
     if (baseRemovedBacket.match(/\([^\(]+?\)/)) {
       baseRemovedBacket = baseRemovedBacket.replace(/\([^\(]+?\)/, tar => {
         if (
-          baseRemovedBacket.match(/\([^\(]+?\)/)!.input ===
-          baseRemovedBacket.match(/\([^\(]+?\)/)![0]
+          baseRemovedBacket.match(/\([^\(]+?\)/)!.length === 1
         ) {
-          return tar.replace("( ", "").replace(" )", "");
+          return String(parseString2Formula(tar.replace("( ", "").replace(" )", "")));
         }
         return String(parseString2Formula(tar));
       });
@@ -71,6 +70,17 @@ export const parseString2Formula = (base: string) => {
           const res = calcPow(part);
           stacks.push(res);
           break
+        }
+        if (part.includes("sin")) {
+          stacks.push(calcSinFromMcLExpansion(Number(part.replace("sin", ""))))
+          break
+        }
+        if (part.includes("cos")) {
+          stacks.push(calcCosFromMcLExpansion(Number(part.replace("cos", ""))))
+          break
+        }
+        if (part.includes("tan")) {
+          stacks.push(calcTan(Number(part.replace("tan", ""))));
         }
         stacks.push(Number(part));
         break;

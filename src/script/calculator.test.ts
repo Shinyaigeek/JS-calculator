@@ -56,7 +56,7 @@ test("3! equal to 6", () => {
   expect(Calculator.calcFactorial("3!"))
 })
 
-test("sin ( π / 2 ) equal to 1", () => {
+test("sin( π / 2 ) equal to 1", () => {
   expect(Calculator.calcSinFromMcLExpansion(Math.PI / 4)).toBe(0.707)
 })
 
@@ -64,3 +64,10 @@ test("cos( π ) equal to -1", () => {
   expect(Calculator.calcCosFromMcLExpansion(Math.PI)).toBe(-1)
 })
 
+test("sin( 3 × π / 4 ) equal to 0.707", () => {
+  expect(Calculator.parseString2Formula("sin( 3 × π ÷ 4 )")).toBe(0.707)
+})
+
+test("2 × sin( 3 × π ÷ 4 ) + ( 1 + 1 ) × cos( 5 × π ÷ ( 1 + 3 ) ) equal to 0.707", () => {
+  expect(Calculator.parseString2Formula("2 × sin( 3 × π ÷ 4 ) + ( 1 + 1 ) × cos( 5 × π ÷ ( 1 + 3 ) )")).toBe(0)
+})
