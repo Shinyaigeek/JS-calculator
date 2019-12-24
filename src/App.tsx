@@ -14,13 +14,77 @@ export interface ButtonProps {
 
 function App() {
   const [shownValue, setShownValue] = useState("");
+  const [userFunc, setUserFunc] = useState("f(x) = ");
+  const [settingUserFunc, setSettingUserFunc] = useState(false);
 
   const PANEL_LABELS: ButtonProps[][][] = [
     [
       [
         {
-          label: "test",
-          func: () => null
+          label: "set f(x)",
+          func: () => {
+            setSettingUserFunc(true);
+            setUserFunc("f(x) = ");
+          }
+        },
+        {
+          label: "x",
+          func: () => {
+            setUserFunc(`${userFunc}x`);
+          },
+          disabled: !settingUserFunc
+        },
+        {
+          label: "a^b",
+          func: () => {
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}^`);
+            } else {
+              setShownValue(`${shownValue}^`);
+            }
+          }
+        }
+      ],
+      [
+        {
+          label: "sin(x)",
+          func: () => {
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}sin( `);
+            } else {
+              setShownValue(`${shownValue}sin( `);
+            }
+          }
+        },
+        {
+          label: "cos(x)",
+          func: () => {
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}cos( `);
+            } else {
+              setShownValue(`${shownValue}cos( `);
+            }
+          }
+        },
+        {
+          label: "tan(x)",
+          func: () => {
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}tan( `);
+            } else {
+              setShownValue(`${shownValue}tan( `);
+            }
+          }
+        },
+        {
+          label: "π",
+          func: () => {
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}π`);
+            } else {
+              setShownValue(`${shownValue}π`);
+            }
+          }
         }
       ]
     ],
@@ -30,14 +94,22 @@ function App() {
           label: "C",
           func: () => {
             setShownValue("");
+            setUserFunc("");
           }
         },
         {
           label: "(",
           func: () => {
-            shownValue.length === 0 || shownValue[shownValue.length - 1] === " "
-              ? setShownValue(`${shownValue}( `)
-              : setShownValue(`${shownValue} ( `);
+            if (settingUserFunc) {
+              userFunc.length === 0 || userFunc[userFunc.length - 1] === " "
+                ? setUserFunc(`${userFunc}( `)
+                : setUserFunc(`${userFunc} ( `);
+            } else {
+              shownValue.length === 0 ||
+              shownValue[shownValue.length - 1] === " "
+                ? setShownValue(`${shownValue}( `)
+                : setShownValue(`${shownValue} ( `);
+            }
           },
           disabled:
             shownValue.length > 0 &&
@@ -53,7 +125,11 @@ function App() {
         {
           label: ")",
           func: () => {
-            setShownValue(`${shownValue} )`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc} )`);
+            } else {
+              setShownValue(`${shownValue} )`);
+            }
           },
           disabled:
             Number.isNaN(Number(shownValue.split("").pop())) ||
@@ -63,7 +139,11 @@ function App() {
         {
           label: "÷",
           func: () => {
-            setShownValue(`${shownValue} ÷ `);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc} ÷ `);
+            } else {
+              setShownValue(`${shownValue} ÷ `);
+            }
           }
         }
       ],
@@ -71,25 +151,41 @@ function App() {
         {
           label: "7",
           func: () => {
-            setShownValue(`${shownValue}7`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}7`);
+            } else {
+              setShownValue(`${shownValue}7`);
+            }
           }
         },
         {
           label: "8",
           func: () => {
-            setShownValue(`${shownValue}8`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}8`);
+            } else {
+              setShownValue(`${shownValue}8`);
+            }
           }
         },
         {
           label: "9",
           func: () => {
-            setShownValue(`${shownValue}9`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}9`);
+            } else {
+              setShownValue(`${shownValue}9`);
+            }
           }
         },
         {
           label: "×",
           func: () => {
-            setShownValue(`${shownValue} × `);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc} × `);
+            } else {
+              setShownValue(`${shownValue} × `);
+            }
           }
         }
       ],
@@ -97,25 +193,41 @@ function App() {
         {
           label: "4",
           func: () => {
-            setShownValue(`${shownValue}4`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}4`);
+            } else {
+              setShownValue(`${shownValue}4`);
+            }
           }
         },
         {
           label: "5",
           func: () => {
-            setShownValue(`${shownValue}5`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}5`);
+            } else {
+              setShownValue(`${shownValue}5`);
+            }
           }
         },
         {
           label: "6",
           func: () => {
-            setShownValue(`${shownValue}6`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}6`);
+            } else {
+              setShownValue(`${shownValue}6`);
+            }
           }
         },
         {
           label: "-",
           func: () => {
-            setShownValue(`${shownValue} - `);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc} - `);
+            } else {
+              setShownValue(`${shownValue} - `);
+            }
           }
         }
       ],
@@ -123,25 +235,41 @@ function App() {
         {
           label: "1",
           func: () => {
-            setShownValue(`${shownValue}1`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}1`);
+            } else {
+              setShownValue(`${shownValue}1`);
+            }
           }
         },
         {
           label: "2",
           func: () => {
-            setShownValue(`${shownValue}2`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}2`);
+            } else {
+              setShownValue(`${shownValue}2`);
+            }
           }
         },
         {
           label: "3",
           func: () => {
-            setShownValue(`${shownValue}3`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}3`);
+            } else {
+              setShownValue(`${shownValue}3`);
+            }
           }
         },
         {
           label: "+",
           func: () => {
-            setShownValue(`${shownValue} + `);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc} + `);
+            } else {
+              setShownValue(`${shownValue} + `);
+            }
           }
         }
       ],
@@ -149,7 +277,11 @@ function App() {
         {
           label: "0",
           func: () => {
-            setShownValue(`${shownValue}0`);
+            if (settingUserFunc) {
+              setUserFunc(`${userFunc}0`);
+            } else {
+              setShownValue(`${shownValue}0`);
+            }
           }
         },
         {
@@ -180,7 +312,7 @@ function App() {
 
   return (
     <div>
-      <Result label={shownValue} />
+      <Result label={shownValue} userFunc={userFunc} />
       <div className="slider">
         {PANEL_LABELS.map((pageprops, index) => {
           return (
