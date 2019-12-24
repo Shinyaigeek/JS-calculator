@@ -14,13 +14,40 @@ export interface ButtonProps {
 
 function App() {
   const [shownValue, setShownValue] = useState("");
+  const [userFunc, setUserFunc] = useState("");
+  const [selectingPow, setSelectingPow] = useState(0);
 
   const PANEL_LABELS: ButtonProps[][][] = [
     [
       [
         {
-          label: "test",
+          label: "f(x)",
           func: () => null
+        },
+        {
+          label: "f(x)",
+          func: () => null
+        },
+        {
+          label: "f(x)",
+          func: () => null
+        },
+        {
+          label: "a^b",
+          func: () => {
+            setShownValue(`${shownValue}a^b`);
+            setSelectingPow(1)
+          },
+          disabled:
+            shownValue.length !== 0 &&
+            !Number.isNaN(
+              Number(
+                shownValue
+                  .trim()
+                  .split("")
+                  .pop()
+              )
+            )
         }
       ]
     ],
@@ -30,6 +57,7 @@ function App() {
           label: "C",
           func: () => {
             setShownValue("");
+            setUserFunc("");
           }
         },
         {
@@ -71,7 +99,13 @@ function App() {
         {
           label: "7",
           func: () => {
-            setShownValue(`${shownValue}7`);
+            if(selectingPow){
+              const splittedValue = shownValue.split(" ");
+              
+              setShownValue(`${shownValue.replace}`)
+            }else{
+              setShownValue(`${shownValue}7`);
+            }
           }
         },
         {
