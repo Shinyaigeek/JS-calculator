@@ -45,9 +45,29 @@ test("( ( 3 + 5 ) × 9 ) - ( 4 ÷ 2 ) to equal to 70", () => {
 });
 
 test("2 * 3 to equal to 8", () => {
-  expect(Calculator.pow(2,3)).toBe(8);
+  expect(Calculator.pow(2, 3)).toBe(8);
 });
 
 test("2 * 3 * 4 to equal to 4096", () => {
   expect(Calculator.calcPow("2^3^4")).toBe(4096);
 });
+
+test("3! equal to 6", () => {
+  expect(Calculator.calcFactorial("3!"))
+})
+
+test("sin( π / 2 ) equal to 1", () => {
+  expect(Calculator.calcSinFromMcLExpansion(Math.PI / 4)).toBe(0.707)
+})
+
+test("cos( π ) equal to -1", () => {
+  expect(Calculator.calcCosFromMcLExpansion(Math.PI)).toBe(-1)
+})
+
+test("sin( 3 × π / 4 ) equal to 0.707", () => {
+  expect(Calculator.parseString2Formula("sin( 3 × π ÷ 4 )")).toBe(0.707)
+})
+
+test("2 × sin( 3 × π ÷ 4 ) + ( 1 + 1 ) × cos( 5 × π ÷ ( 1 + 3 ) ) equal to 0.707", () => {
+  expect(Calculator.parseString2Formula("2 × sin( 3 × π ÷ 4 ) + ( 1 + 1 ) × cos( 5 × π ÷ ( 1 + 3 ) )")).toBe(0)
+})
